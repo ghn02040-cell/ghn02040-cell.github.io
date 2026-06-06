@@ -3,111 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>포트폴리오</title>
+  <title>이수현 포트폴리오</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0d0d0d; --surface: #161616; --card: #1e1e1e;
-      --accent: #00e5a0; --accent2: #0077ff;
-      --text: #f0f0f0; --muted: #888; --border: #2a2a2a;
-    }
+    :root { --bg: #f0f4ff; --card: #ffffff; --accent: #3b82f6; --text: #1e293b; --muted: #64748b; --border: #e2e8f0; --light: #dbeafe; }
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(13,13,13,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    .nav-logo { font-family: 'Space Mono', monospace; font-size: 18px; color: var(--accent); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text); }
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 48px 80px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%); pointer-events: none; }
-    .hero-tag { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: 2px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
-    .hero-title { font-size: clamp(48px, 8vw, 96px); font-weight: 700; line-height: 1.05; letter-spacing: -3px; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.4s; }
-    .hero-title span { color: var(--accent); }
-    .hero-desc { max-width: 560px; font-size: 18px; color: var(--muted); line-height: 1.8; opacity: 0; animation: fadeUp 0.6s ease forwards 0.6s; }
-    .hero-cta { margin-top: 48px; display: flex; gap: 16px; opacity: 0; animation: fadeUp 0.6s ease forwards 0.8s; }
-    .btn { padding: 14px 32px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; border-radius: 4px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
-    .btn-primary { background: var(--accent); color: #000; border: none; }
-    .btn-primary:hover { background: #00c98a; transform: translateY(-2px); }
-    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-secondary:hover { border-color: var(--muted); transform: translateY(-2px); }
-    section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
-    .section-label { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
-    .section-title { font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 64px; line-height: 1.1; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; transition: all 0.25s; position: relative; overflow: hidden; }
-    .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-    .skill-card:hover { border-color: #333; transform: translateY(-4px); }
-    .skill-card:hover::before { transform: scaleX(1); }
-    .skill-icon { font-family: 'Space Mono', monospace; font-size: 24px; color: var(--accent); margin-bottom: 12px; }
-    .skill-name { font-size: 15px; font-weight: 500; color: var(--text); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; gap: 40px; padding: 18px 48px; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 48px 80px; background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 50%, #eef2ff 100%); }
+    .hero-inner { display: flex; align-items: center; gap: 80px; max-width: 1000px; width: 100%; }
+    .photo-wrap { position: relative; flex-shrink: 0; }
+    .photo-circle { width: 260px; height: 260px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #6366f1); display: flex; align-items: center; justify-content: center; padding: 4px; }
+    .badge { position: absolute; background: white; border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 500; color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.08); white-space: nowrap; }
+    .badge-1 { top: 20px; right: -20px; }
+    .badge-2 { bottom: 30px; left: -20px; }
+    .hero-text { flex: 1; }
+    .hero-greeting { font-size: 16px; color: var(--muted); margin-bottom: 8px; }
+    .hero-name { font-size: clamp(52px, 7vw, 80px); font-weight: 700; letter-spacing: -2px; line-height: 1; margin-bottom: 20px; }
+    .hero-name span { color: var(--accent); }
+    .hero-desc { font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .hero-tag { padding: 6px 16px; background: white; border: 1px solid var(--border); border-radius: 100px; font-size: 13px; color: var(--accent); font-weight: 500; }
+    .hero-cta { display: flex; gap: 12px; }
+    .btn { padding: 13px 28px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; font-weight: 500; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-block; }
+    .btn-primary { background: var(--accent); color: white; border: none; }
+    .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-secondary { background: white; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .section-wrap { max-width: 1000px; margin: 0 auto; padding: 90px 48px; }
+    .section-label { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 3px; margin-bottom: 10px; }
+    .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .section-line { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 48px; }
+    .white-bg { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-text { font-size: 16px; color: var(--muted); line-height: 1.9; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: var(--bg); border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 700; color: var(--accent); font-family: 'Space Mono', monospace; }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .skill-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; transition: all 0.25s; text-align: center; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .skill-icon { font-size: 28px; margin-bottom: 10px; }
+    .skill-name { font-size: 15px; font-weight: 500; }
     .skill-level { font-size: 12px; color: var(--muted); margin-top: 4px; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px; transition: all 0.25s; }
-    .project-card:hover { border-color: #333; transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.4); }
-    .project-num { font-family: 'Space Mono', monospace; font-size: 48px; font-weight: 700; color: var(--border); margin-bottom: 16px; line-height: 1; }
-    .project-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .exp-card { background: var(--bg); border-radius: 12px; padding: 32px; border-left: 4px solid var(--accent); margin-bottom: 16px; }
+    .exp-company { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .exp-period { font-size: 13px; color: var(--muted); margin-bottom: 12px; font-family: 'Space Mono', monospace; }
+    .exp-role { font-size: 15px; color: var(--text); }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .cert-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; align-items: center; gap: 16px; transition: all 0.2s; }
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .cert-icon { width: 44px; height: 44px; background: var(--light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .cert-name { font-size: 14px; font-weight: 500; }
+    .cert-grade { font-size: 12px; color: var(--accent); margin-top: 2px; }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .edu-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: all 0.2s; }
+    .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .edu-period { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 8px; }
+    .edu-school { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .edu-major { font-size: 14px; color: var(--muted); }
+    .edu-badge { display: inline-block; margin-top: 12px; padding: 4px 12px; background: var(--light); border-radius: 100px; font-size: 12px; color: var(--accent); font-weight: 500; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .project-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; transition: all 0.25s; }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(59,130,246,0.1); }
+    .project-num { font-family: 'Space Mono', monospace; font-size: 40px; font-weight: 700; color: var(--light); margin-bottom: 12px; }
+    .project-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .tag { padding: 4px 12px; background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2); border-radius: 100px; font-size: 12px; color: var(--accent); font-family: 'Space Mono', monospace; }
-    .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 64px 56px; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
-    .contact-text h3 { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
-    .contact-text p { color: var(--muted); font-size: 16px; }
-    .contact-email { font-family: 'Space Mono', monospace; font-size: 15px; color: var(--accent); text-decoration: none; border: 1px solid rgba(0,229,160,0.3); padding: 16px 28px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; }
-    .contact-email:hover { background: rgba(0,229,160,0.08); transform: translateY(-2px); }
-    footer { border-top: 1px solid var(--border); padding: 32px 48px; text-align: center; color: var(--muted); font-size: 13px; font-family: 'Space Mono', monospace; }
-    .divider { width: 100%; height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag { padding: 4px 12px; background: var(--light); border-radius: 100px; font-size: 12px; color: var(--accent); font-weight: 500; }
+    .contact-box { background: linear-gradient(135deg, #3b82f6, #6366f1); border-radius: 20px; padding: 60px 52px; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+    .contact-text h3 { font-size: 30px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .contact-text p { color: rgba(255,255,255,0.8); font-size: 15px; }
+    .contact-email { font-family: 'Space Mono', monospace; font-size: 14px; color: white; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); padding: 14px 24px; border-radius: 8px; transition: all 0.2s; white-space: nowrap; }
+    .contact-email:hover { background: rgba(255,255,255,0.15); }
+    footer { border-top: 1px solid var(--border); padding: 28px 48px; text-align: center; color: var(--muted); font-size: 13px; background: white; }
+    .divider { width: 100%; height: 1px; background: var(--border); }
+    @media (max-width: 768px) {
+      .hero-inner { flex-direction: column; text-align: center; gap: 40px; }
+      .hero-tags, .hero-cta { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-box { flex-direction: column; text-align: center; }
+      .section-wrap { padding: 60px 24px; }
+      nav { gap: 16px; padding: 16px 20px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
 <nav>
-  <div class="nav-logo">ghn02040-cell</div>
-  <div class="nav-links">
-    <a href="#skills">스킬</a>
-    <a href="#projects">프로젝트</a>
-    <a href="#contact">연락처</a>
-  </div>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">경력</a>
+  <a href="#education">학력</a>
+  <a href="#certs">자격증</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
+
 <div class="hero">
-  <div class="hero-tag">DEVELOPER PORTFOLIO</div>
-  <h1 class="hero-title">안녕하세요,<br>저는 <span>개발자</span><br>지망생입니다.</h1>
-  <p class="hero-desc">웹 개발을 공부하며 다양한 프로젝트를 만들고 있는 개발자 지망생입니다.</p>
-  <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-    <a href="#contact" class="btn btn-secondary">연락하기</a>
+  <div class="hero-inner">
+    <div class="photo-wrap">
+      <div class="photo-circle">
+        <div style="width:100%;height:100%;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:80px;border:4px solid white;">👩‍💻</div>
+      </div>
+      <div class="badge badge-1">💼 개발자 지망생</div>
+      <div class="badge badge-2">📜 자격증 3개</div>
+    </div>
+    <div class="hero-text">
+      <div class="hero-greeting">안녕하세요, 저는</div>
+      <h1 class="hero-name"><span>이수현</span>입니다</h1>
+      <p class="hero-desc">웹 개발을 공부하며 다양한 프로젝트를<br>만들고 있는 개발자 지망생입니다.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">병원코디네이터 1급</span>
+        <span class="hero-tag">ITQ 3종</span>
+        <span class="hero-tag">HTML · CSS · JS</span>
+        <span class="hero-tag">Git / GitHub</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+        <a href="#contact" class="btn btn-secondary">연락하기</a>
+      </div>
+    </div>
   </div>
 </div>
+
 <div class="divider"></div>
-<section id="skills">
+<div class="white-bg" id="about"><div class="section-wrap">
+  <div class="section-label">ABOUT ME</div>
+  <h2 class="section-title">자기소개</h2>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>웹 개발을 공부하며 다양한 프로젝트를 만들고 있는 개발자 지망생입니다.</p><br>
+      <p>물류 현장에서 1년간 근무하며 책임감과 꼼꼼함을 길렀고, 현재는 그 경험을 바탕으로 웹 개발이라는 새로운 도전을 이어가고 있습니다.</p><br>
+      <p>HTML, CSS, JavaScript를 공부하며 직접 만드는 즐거움을 알아가고 있습니다.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-num">1년</div><div class="stat-label">현장 경력</div></div>
+      <div class="stat-card"><div class="stat-num">3개</div><div class="stat-label">보유 자격증</div></div>
+      <div class="stat-card"><div class="stat-num">3개</div><div class="stat-label">완성 프로젝트</div></div>
+      <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">성장 중</div></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+<div id="skills"><div class="section-wrap">
   <div class="section-label">SKILLS</div>
   <h2 class="section-title">기술 스택</h2>
+  <div class="section-line"></div>
   <div class="skills-grid">
-    <div class="skill-card"><div class="skill-icon">&lt;/&gt;</div><div class="skill-name">HTML</div><div class="skill-level">웹 구조 마크업</div></div>
-    <div class="skill-card"><div class="skill-icon">#</div><div class="skill-name">CSS</div><div class="skill-level">스타일링 & 레이아웃</div></div>
-    <div class="skill-card"><div class="skill-icon">JS</div><div class="skill-name">JavaScript</div><div class="skill-level">인터랙티브 기능 구현</div></div>
-    <div class="skill-card"><div class="skill-icon">⌥</div><div class="skill-name">Git / GitHub</div><div class="skill-level">버전 관리</div></div>
+    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML</div><div class="skill-level">웹 구조 마크업</div></div>
+    <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">CSS</div><div class="skill-level">스타일링 & 레이아웃</div></div>
+    <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-level">인터랙티브 기능</div></div>
+    <div class="skill-card"><div class="skill-icon">🐙</div><div class="skill-name">Git / GitHub</div><div class="skill-level">버전 관리</div></div>
   </div>
-</section>
+</div></div>
+
 <div class="divider"></div>
-<section id="projects">
+<div class="white-bg" id="experience"><div class="section-wrap">
+  <div class="section-label">EXPERIENCE</div>
+  <h2 class="section-title">경력</h2>
+  <div class="section-line"></div>
+  <div class="exp-card">
+    <div class="exp-company">GS네트웍스점</div>
+    <div class="exp-period">2023.04 — 2024.04 · 1년</div>
+    <div class="exp-role">물류 패킹 담당 · 정확하고 빠른 작업 처리 및 재고 관리</div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+<div id="education"><div class="section-wrap">
+  <div class="section-label">EDUCATION</div>
+  <h2 class="section-title">학력</h2>
+  <div class="section-line"></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-period">2014 — 2017</div>
+      <div class="edu-school">금오여자고등학교</div>
+      <div class="edu-major">인문계</div>
+      <span class="edu-badge">졸업</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-period">2017 — 2019</div>
+      <div class="edu-school">대구과학대학교</div>
+      <div class="edu-major">의무행정과</div>
+      <span class="edu-badge">졸업</span>
+    </div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+<div class="white-bg" id="certs"><div class="section-wrap">
+  <div class="section-label">CERTIFICATES</div>
+  <h2 class="section-title">자격증</h2>
+  <div class="section-line"></div>
+  <div class="certs-grid">
+    <div class="cert-card"><div class="cert-icon">🏥</div><div><div class="cert-name">병원코디네이터</div><div class="cert-grade">1급</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-name">ITQ 엑셀</div><div class="cert-grade">한국생산성본부</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📝</div><div><div class="cert-name">ITQ 아래한글</div><div class="cert-grade">한국생산성본부</div></div></div>
+  </div>
+</div></div>
+
+<div class="divider"></div>
+<div id="projects"><div class="section-wrap">
   <div class="section-label">PROJECTS</div>
   <h2 class="section-title">프로젝트</h2>
+  <div class="section-line"></div>
   <div class="projects-grid">
     <div class="project-card"><div class="project-num">01</div><div class="project-title">계산기</div><div class="project-desc">HTML, CSS, JavaScript로 만든 웹 계산기입니다.</div><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></div>
     <div class="project-card"><div class="project-num">02</div><div class="project-title">할 일 목록 앱</div><div class="project-desc">할 일을 추가하고 완료 처리할 수 있는 Todo List 앱입니다.</div><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div></div>
-    <div class="project-card"><div class="project-num">03</div><div class="project-title">자기소개 페이지</div><div class="project-desc">나를 소개하는 간단한 웹 페이지입니다.</div><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div></div>
+    <div class="project-card"><div class="project-num">03</div><div class="project-title">포트폴리오 사이트</div><div class="project-desc">지금 보고 계신 포트폴리오 사이트입니다. GitHub Pages로 배포했습니다.</div><div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div></div>
   </div>
-</section>
+</div></div>
+
 <div class="divider"></div>
-<section id="contact">
+<div id="contact"><div class="section-wrap">
   <div class="section-label">CONTACT</div>
   <h2 class="section-title">연락처</h2>
+  <div class="section-line"></div>
   <div class="contact-box">
     <div class="contact-text"><h3>같이 만들어봐요 👋</h3><p>프로젝트 제안이나 궁금한 점이 있으면 편하게 연락주세요.</p></div>
     <a href="mailto:ghn02046@naver.com" class="contact-email">ghn02046@naver.com</a>
   </div>
-</section>
-<footer>© 2025 ghn02040-cell · Built with HTML & CSS</footer>
+</div></div>
+
+<footer>© 2025 이수현 · Built with HTML & CSS</footer>
 </body>
 </html>
